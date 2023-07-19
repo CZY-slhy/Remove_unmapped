@@ -1,10 +1,10 @@
-PROJECT_DIR: /project/lanling/KC2023-H0638
+PROJECT_DIR: /XXX/XXX
 SAMPLES:
-    Ctrl_1:
-    Ctrl_2:
-    RNAi_1:
-    RNAi_2:
-    OE_1:
+    #Ctrl_1:
+    #Ctrl_2:
+    #RNAi_1:
+    #RNAi_2:
+    #OE_1:
     OE_2:
 COMPARE:
     RNAi__Ctrl:

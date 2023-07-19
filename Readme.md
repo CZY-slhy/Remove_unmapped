@@ -1,71 +1,21 @@
-# RIP-seq document
+# Remove unmapped
 
-## RIP-seq
+## annotation
 
-&ensp;&ensp;RIP-seq（RNA immunoprecipitation with next generation sequencing，RNA免疫共沉淀结合高通量测序技术）是在转录组层面研究细胞内RNA与蛋白结合情况的技术，是了解转录后调控网络动态过程的有力工具。 这种技术运用针对目标蛋白的抗体把相应的RNA-蛋白复合物沉淀下来，然后经过分离纯化，对结合在复合物上的RNA进行测序分析。RIP-seq在全转录组范围内对蛋白结合位点进行筛选与鉴定，系统、全面、精准挖掘结合位点，深度解析目标RNA种类以及其与蛋白的相互作用。
+1、yaml文件中需要有UID参数注明是否为UID项目，具体可见project.yaml示例
 
-## Quick start
+2、对于不需要剔除的样本，可直接在yaml文件中注释掉对应sample，具体可见project.yaml示例
 
-1. Edit the file `KC_metadata_rip.xls` and fill in the config information of your project, for details, see template
+## quick test
 
-2. The following shell scripts are generated under the project path
-
-```
-    /nas/Pipeline/kcrip/rip/bin/python \ 
-    /nas/Pipeline/kcrip/rip/script/python/init.py \ 
-    -I KC_metadata_rip.xls
-```
- 
-&ensp;&ensp;&ensp;&ensp;**The following files are generated under the project path**
+可直接试运行以下命令进行测试
 
 ```
-    1.Prepare.20220725150158.sh
-    2.QC.20220725150158.sh
-    3.Mapping.20220725150158.sh
-    4.CoreAnalysisis.20220725150158.sh
-    5.DiffPeak.20220725150158.sh
-    report.20220725150158.sh
-    upload.20220725150158.sh
-    byebye.20220725150158.sh
+/project/chenzhiying/Remove_unmapped_202307/bin/snakemake \   
+-ps /project/chenzhiying/Remove_unmapped_202307/master/Master.Remove.snakefile.smk \   
+--configfile /project/chenzhiying/KC2023-H0638-test/KC2023-H0638.20230717161445.yaml \
+-j 3 --directory /project/chenzhiying/KC2023-H0638-test --latency-wait 300 \  
+--cluster 'sbatch -c {cluster.threads} -o {cluster.stdout} -e {cluster.stderr} --parsable' \  
+--cluster-config /project/chenzhiying/Remove_unmapped_202307/pipeline.yaml \                      
+--cluster-cancel scancel --use-singularity --singularity-args '-B /nas:/nas -B /project:/project'  
 ```
-
-3. Execute the following command to start running the pipeline
-
-```
-    bash 1.Prepare.20220725150158.sh
-    bash 2.QC.20220725150158.sh
-    bash 3.Mapping.20220725150158.sh
-    bash 4.CoreAnalysisis.20220725150158.sh
-    bash 5.DiffPeak.20220725150158.sh
-```
-
-<br>
-<br>
-<br>
-<br>
-
-4. Execute the following command to package the analysis report
-
-```
-    bash report.20220725150158.sh
-```
-&ensp;&ensp;&ensp;&ensp;**The final project report will be generated in：**<br>
-
-```
-    project/report/build/KC2022-G0656-20220725150158
-    project/report/build/KC2022-G0656-20220725150158.zip
-```
-
-5. Execute the following command to upload data
-
-```
-    bash upload.20220725150158.sh
-```
-
-6. Execute the following command to clean up the completed projects
-
-```
-    bash byebye.20220725150158.sh
-```
-
-
