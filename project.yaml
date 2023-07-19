@@ -1,0 +1,47 @@
+PROJECT_DIR: /project/lanling/KC2023-H0638
+SAMPLES:
+    Ctrl_1:
+    Ctrl_2:
+    RNAi_1:
+    RNAi_2:
+    OE_1:
+    OE_2:
+COMPARE:
+    RNAi__Ctrl:
+        TREAT:
+            RNAi_1,RNAi_2
+        CONTROL:
+            Ctrl_1,Ctrl_2
+    OE__Ctrl:
+        TREAT:
+            OE_1,OE_2
+        CONTROL:
+            Ctrl_1,Ctrl_2
+
+UID: True
+ANCHORS:
+    bar1:
+        NNNNNNNNNNNNGCAGATCGCACA
+    bar2:
+        NNNNNNNNNNNNATGCTATCTGGT
+    bar3:
+        NNNNNNNNNNNNTGTACCGAGTTG
+    bar4:
+        NNNNNNNNNNNNCACTGGATACAC
+P5: ACACTCTTTCCCTACACGACGCTCTTCCGATCT
+P7: GTGACTGGAGTTCAGACGTGTGCTCTTCCGATCT
+FDR: none
+PVALUE: 0.05
+FC: 1.0
+KS: mmu
+GS: mmu
+FA: /nas/genome/Mus_musculus/GRCm38/Mus_musculus.GRCm38.fa
+STAR_ref_dir: /nas/genome/Mus_musculus/GRCm38/STAR
+GFF: /nas/genome/Mus_musculus/GRCm38/Mus_musculus.GRCm38.87_standard_add_GENE.gff
+GTF: /nas/genome/Mus_musculus/GRCm38/Mus_musculus.GRCm38.87_standard.gtf
+BED: /nas/genome/Mus_musculus/GRCm38/Mus_musculus.GRCm38.87_standard.bed
+miRNA_fa: None
+CPAT_tsv: /nas/software/anaconda3/envs/kcmRNA/soft/CPAT-1.2.4/dat/zebrafish_Hexamer.tsv
+CPAT_Rdata: /nas/software/anaconda3/envs/kcmRNA/soft/CPAT-1.2.4/dat/Zebrafish_logitModel.Rdata
+ALIGN: STAR
+HISAT_idx: 

@@ -1,0 +1,40 @@
+__default__:
+    threads: 1
+    stdout: log/%j.%x.%N.stdout
+    stderr: log/%j.%x.%N.stderr
+
+
+envs:
+    singularity: /usr/bin/singularity
+
+
+############################### Remove Unmapped ###############################
+Unmapped_id:
+    soft:
+        ExtractReadsid:
+            path: /project/chenzhiying/Remove_unmapped_202307/script/python/extract_reads_id.py
+            args: 
+            version: Version-1.0.0
+    singularity:
+        py3:
+            path: /nas/Containers/Python3.sif
+            conargs: exec 
+            soft:
+                python3:
+                    cmd: python3
+                    cmdargs: 
+    libs:
+    data:
+    threads: 4
+
+
+remove_Unmapped_id:
+    soft:
+        Filt:
+            path: /project/chenzhiying/Remove_unmapped_202307/bin/RrnaFilt
+            args: 
+            version: Version-1.0.0
+    singularity:
+    libs:
+    data:
+    threads: 4
