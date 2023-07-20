@@ -51,6 +51,7 @@ def get_unmappedid(unmapped, readsid, odir):
     for line in unmappedid:
         if line.startswith('@'):
             unmappedSet.add(line.split()[0])
+    unmappedid.close()
 
     convertid = open(readsid, "r")
     for line in convertid:
@@ -58,10 +59,12 @@ def get_unmappedid(unmapped, readsid, odir):
         if lines[0] in unmappedSet:
                 for i in lines[1:]:
                     trueunmappedSet.add(i)
+    convertid.close()
+
     outdir = open(odir, "w")
     for readsid in trueunmappedSet:
         outdir.write(readsid + '\n')
-    
+    outdir.close()
 
 def main():
 
